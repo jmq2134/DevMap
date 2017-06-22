@@ -1,25 +1,28 @@
 $( document ).ready(function() {
 // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyCtqKlasKaY9o0K3A8dLVSwrUs8S8i9gso",
-    authDomain: "boot-3ff6b.firebaseapp.com",
-    databaseURL: "https://boot-3ff6b.firebaseio.com",
-    projectId: "boot-3ff6b",
-    storageBucket: "boot-3ff6b.appspot.com",
-    messagingSenderId: "591583751544"
-};
-firebase.initializeApp(config);
+  var config = {
+    apiKey: "AIzaSyDh9kr2548vgUt-s4gexOeDklL2DnWzoGU",
+    authDomain: "devmapper-c8415.firebaseapp.com",
+    databaseURL: "https://devmapper-c8415.firebaseio.com",
+    projectId: "devmapper-c8415",
+    storageBucket: "devmapper-c8415.appspot.com",
+    messagingSenderId: "119059605410"
+  };
+  firebase.initializeApp(config);
 
+// Variables
 var database=firebase.database();
 
 var isEdit =0; // to identify if this is editing or adding new user
 var dataKeyForEdit ; // keep the key for which child is being edited
-function currencyFormat (num) {
-    return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-}
+
+// Currency conversion function
+// function currencyFormat (num) {
+//     return "$" + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+// }
 
 
-$("#phone_id").mask('(000) 000-0000', {clearIfNotMatch: true}); //mask for phone number
+// $("#phone_id").mask('(000) 000-0000', {clearIfNotMatch: true}); //mask for phone number
 $("#zip_id").mask('00000', {clearIfNotMatch: true});	//mask for zip code
 
 //Save button function
@@ -40,25 +43,15 @@ $("#saveCustomerInfo").on("click", function(snap){
             city:$("#city_id").val().trim(),
             state:$("#state_id").val().trim(),
             zip:$("#zip_id").val().trim(),
-            email:$("#email_id").val().trim(),
-            phone:$("#phone_id").val().trim(),
-            startDate:$("#startDate_id").val().trim(),
-            endDate:$("#endDate_id").val().trim(),
-            period:$("#period_id").val().trim(),
-            rate:$("#rate_id").val().trim(),
+            // startDate:$("#startDate_id").val().trim(),
         };
 
-        prepareEventData(customerData)
-			.then(function(response){
-                database.ref().push(customerData);
-			}, function(error){
-
-			})
-
+        console.log(customerData);
 
 		$(".modal-form input, .modal-form textarea").val('');
 	}
-		// if isEdit=1, "save" button will modify existing child
+
+	// if isEdit=1, "save" button will modify existing child
 	else {
 		database.ref().child(dataKeyForEdit).set({
 			name:$("#name_id").val().trim(),
@@ -67,12 +60,7 @@ $("#saveCustomerInfo").on("click", function(snap){
 			city:$("#city_id").val().trim(),
 			state:$("#state_id").val().trim(),
 			zip:$("#zip_id").val().trim(),
-			email:$("#email_id").val().trim(),
-			phone:$("#phone_id").val().trim(),
 			startDate:$("#startDate_id").val().trim(),
-			endDate:$("#endDate_id").val().trim(),
-			period:$("#period_id").val().trim(),
-			rate:$("#rate_id").val().trim(),
 		});
 	}
 });
@@ -91,12 +79,8 @@ database.ref().on("value", function(snap){
 		var city = thisObject.city;
 		var state = thisObject.state;
 		var zip = thisObject.zip;
-		var email = thisObject.email;
-		var phone = thisObject.phone;
 		var startDate= thisObject.startDate;
-		var endDate = thisObject.endDate;
-		var period = thisObject.period;
-		var rate = thisObject.rate;
+
 
 		//create field to contain customer information
 		var customerInfoTr = $("<tr>");
@@ -110,9 +94,6 @@ database.ref().on("value", function(snap){
 		var stateSp = $("<span>");
 		var zipSp = $("<span>");
 		var startDateTd = $("<td>");
-		var endDateTd = $("<td>");
-		var periodTd = $("<td>");
-		var rateTd = $("<td>");
 
 		//save value to data attribute. They will be used in editing mode to preload customer info the pop up window
 		nameTd.attr("data-name", name);
@@ -124,9 +105,6 @@ database.ref().on("value", function(snap){
 		stateSp.attr("data-name", state);
 		zipSp.attr("data-name", zip);
 		startDateTd.attr("data-name", startDate );
-		endDateTd.attr("data-name", endDate);
-		periodTd.attr("data-name",period);
-		rateTd.attr("data-name", rate);
 
 		//combine street, city, state and zip to a full address
 		addrTd.append(street1Sp);
@@ -150,8 +128,6 @@ database.ref().on("value", function(snap){
 		customerInfoTr.append(phoneTd);
 		customerInfoTr.append(addrTd);
 		customerInfoTr.append(startDateTd);
-		customerInfoTr.append(endDateTd);
-		customerInfoTr.append(periodTd);
 		customerInfoTr.append(rateTd);
 		customerInfoTr.append(editTd);
 		customerInfoTr.append(removeTd);
@@ -159,23 +135,17 @@ database.ref().on("value", function(snap){
 		$("#displayCustomerInfo").append(customerInfoTr);
 
 		//show all infor on main page
-
 		nameTd.html(name);
-		emailTd.html(email);
-		phoneTd.html(phone);
 		street1Sp.html(street1 + '&nbsp');
 		street2Sp.html(street2);
 		citySp.html(city+',&nbsp');
 		stateSp.html(state + '&nbsp');
 		zipSp.html(zip);
 		startDateTd.html(startDate);
-		endDateTd.html(endDate);
-		periodTd.html(period);
-		var rateFormat = currencyFormat(parseInt(rate)); 
-		rateTd.html(rateFormat);
 	}
 });
 
+// REMOVE BUTTON FUNCTION
 $(document).on("click", ".removeClass", function (snap){  //when remove button is clicked
 	var street1 = $(this).siblings(":nth-child(4)").children().first(); //find all area that contains address
 	var street2 = street1.next();
@@ -195,10 +165,10 @@ $(document).on("click", ".removeClass", function (snap){  //when remove button i
 			{
 				database.ref().child(key).remove(); //remove the child in database
 		}
+		console.log(sv);
 	}
 	});
 });
-
 
 
 $(document).on("click", ".editClass", function (snap){  //when remove button is clicked
@@ -214,8 +184,7 @@ $(document).on("click", ".editClass", function (snap){  //when remove button is 
 	var zip = state.next();
 	var startDate = phone.next().next();
 	var endDate = startDate.next();
-	var period = endDate.next();
-	var rate = period.next();
+
 
 	//prefill all the input area for the pop up window
 	$("#exampleModalLongTitle").html("Edit Customer Information");
@@ -225,12 +194,7 @@ $(document).on("click", ".editClass", function (snap){  //when remove button is 
 	$("#city_id").val(city.attr("data-name"));
 	$("#state_id").val(state.attr("data-name"));
 	$("#zip_id").val(zip.attr("data-name"));
-	$("#email_id").val(email.attr("data-name"));
-	$("#phone_id").val(phone.attr("data-name"));
 	$("#startDate_id").val(startDate.attr("data-name"));
-	$("#endDate_id").val(endDate.attr("data-name"));
-	$("#period_id").val(period.attr("data-name"));
-	$("#rate_id").val(rate.attr("data-name"));
 
 
 	// find the right child in database
@@ -259,11 +223,10 @@ $(document).on("click", ".editClass", function (snap){  //when remove button is 
 $("#addCustomer").on("click", function (event){
 	event.preventDefault();
 	isEdit=0;
-	$("#exampleModalLongTitle").html("Add A Customer");
+	$("#exampleModalLongTitle").html("Add a site");
 	$(".modal-form input, .modal-form textarea").val('');
 
 });
-
     console.log( "ready!" );
 });
 
