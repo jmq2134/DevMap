@@ -28,6 +28,7 @@ function geocodeAddress(location) {
                 title: location.name
             });
 
+            // Window labels
             var infowindow =  new google.maps.InfoWindow({
                 content: location.name + "<br>" + location.street1 + ' ' + location.street2 + "<br>" + location.city + ' ' + location.state + ' ' + location.zip,
                 map: map
@@ -54,12 +55,24 @@ ref.ref().on("value", function(snapshot) {
     }
 })
 
+
 // Map settings
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 41.503575, lng: -81.611931 },
         zoom: 13,
         mapTypeId: 'roadmap'
+
+     // var radius = new google.maps.Circle({
+     //    strokeColor: '#FF0000',
+     //    strokeOpacity: 0.8,
+     //    strokeWeight: 2,
+     //    fillColor: '#FF0000',
+     //    fillOpacity: 0.35,
+     //    map: map,
+     //    radius: 20000    
+     // })   
+
     });
     window.mapInstance = map;
 };
