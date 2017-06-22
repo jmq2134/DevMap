@@ -42,55 +42,16 @@ body {
 
 /* MAP STYLES */
 
+#appcontent {
+    width: 100%;
+    height: 100%;
+}
+
 #map {
-    margin-top: 60px;
-    height: 450px;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 50px;
-    border: 5px solid #9FD49D;
-    border-radius: 3px;
-}
-
-
-/* CALENDAR STYLES */
-
-.cal-day {
-    max-height: 300px;
-    min-height: 150px;
-    margin: 0px -15px;
-}
-
-.next-seven {
-    max-height: 300px;
-    min-height: 300px;
-}
-
-.panel-heading 4 {
-    background-color: #9FD49D;
-}
-
-.dayofmonth {
-    top: 8px;
-    left: 12px;
     position: absolute;
-    font-size: 20px;
+    top: 60px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
 }
 
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.panel {
-    margin-bottom: 10px;
-}
-
-.panel-default > .panel-heading.customer-panel {
-    margin: 0px;
-    padding: 13px;
-}
-
-.cal-entry:hover {
-    cursor: pointer;
-}
