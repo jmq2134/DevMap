@@ -57,7 +57,7 @@ ref.ref().on("value", function(snapshot) {
 
 
 // Map settings
-function initAutocomplete() {
+function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 41.503575, lng: -81.611931 },
         zoom: 13,
@@ -74,6 +74,8 @@ function initAutocomplete() {
      // })   
 
     });
+
+    
     window.mapInstance = map;
 };
 

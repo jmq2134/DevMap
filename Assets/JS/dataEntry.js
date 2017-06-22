@@ -12,7 +12,6 @@ $( document ).ready(function() {
 
 // Variables
 var database=firebase.database();
-
 var isEdit =0; // to identify if this is editing or adding new user
 var dataKeyForEdit ; // keep the key for which child is being edited
 
@@ -27,6 +26,7 @@ $("#zip_id").mask('00000', {clearIfNotMatch: true});	//mask for zip code
 
 //Save button function
 $("#saveCustomerInfo").on("click", function(snap){
+	// Wait to load
 	snap.preventDefault();
 	//pop up a "Saved Successfully!" msg for a second and then fade
 	var showSaved = $("<p><font color='red'>Saved Successfully!</font></p>").delay(1000).fadeOut(500);
@@ -43,10 +43,13 @@ $("#saveCustomerInfo").on("click", function(snap){
             city:$("#city_id").val().trim(),
             state:$("#state_id").val().trim(),
             zip:$("#zip_id").val().trim(),
-            // startDate:$("#startDate_id").val().trim(),
+            startDate:$("#startDate_id").val().trim(),
         };
 
         console.log(customerData);
+
+        database.ref().push(customerData);
+	
 
 		$(".modal-form input, .modal-form textarea").val('');
 	}
@@ -81,12 +84,9 @@ database.ref().on("value", function(snap){
 		var zip = thisObject.zip;
 		var startDate= thisObject.startDate;
 
-
 		//create field to contain customer information
 		var customerInfoTr = $("<tr>");
 		var nameTd = $("<td>");
-		var emailTd = $("<td>");
-		var phoneTd = $("<td>");
 		var addrTd = $("<td>");
 		var street1Sp = $("<span>");
 		var street2Sp = $("<span>");
@@ -97,8 +97,6 @@ database.ref().on("value", function(snap){
 
 		//save value to data attribute. They will be used in editing mode to preload customer info the pop up window
 		nameTd.attr("data-name", name);
-		emailTd.attr("data-name", email);
-		phoneTd.attr("data-name", phone);
 		street1Sp.attr("data-name", street1);
 		street2Sp.attr("data-name", street2);
 		citySp.attr("data-name", city);
@@ -124,11 +122,8 @@ database.ref().on("value", function(snap){
 
 
 		customerInfoTr.append(nameTd);
-		customerInfoTr.append(emailTd);
-		customerInfoTr.append(phoneTd);
 		customerInfoTr.append(addrTd);
 		customerInfoTr.append(startDateTd);
-		customerInfoTr.append(rateTd);
 		customerInfoTr.append(editTd);
 		customerInfoTr.append(removeTd);
 
@@ -173,18 +168,16 @@ $(document).on("click", ".removeClass", function (snap){  //when remove button i
 
 $(document).on("click", ".editClass", function (snap){  //when remove button is clicked
 	isEdit = 1;
+
+	console.log($(this).siblings());
 	
 	var name = $(this).siblings().first(); //find info of the row where edit button is clicked, they are used to preload the pop ip window
-	var email = name.next();
-	var phone = email.next();
 	var street1 = $(this).siblings(":nth-child(4)").children().first();
 	var street2 = street1.next();
 	var city = street2.next().next();
 	var state = city.next();
 	var zip = state.next();
-	var startDate = phone.next().next();
-	var endDate = startDate.next();
-
+	var startDate = zip.next();
 
 	//prefill all the input area for the pop up window
 	$("#exampleModalLongTitle").html("Edit Customer Information");
@@ -195,7 +188,6 @@ $(document).on("click", ".editClass", function (snap){  //when remove button is 
 	$("#state_id").val(state.attr("data-name"));
 	$("#zip_id").val(zip.attr("data-name"));
 	$("#startDate_id").val(startDate.attr("data-name"));
-
 
 	// find the right child in database
 	database.ref().once('value').then(function(snapshot) {
@@ -212,12 +204,10 @@ $(document).on("click", ".editClass", function (snap){  //when remove button is 
 			{
 				dataKeyForEdit = key; // save the key so when "save button" is clicked, it knows where to set database value
 				//console.log(dataKeyForEdit);
-			
 			}
 		}
 	});
 
-});
 
 //when add a customer is clicked, clear all value in pop up window
 $("#addCustomer").on("click", function (event){
@@ -228,6 +218,8 @@ $("#addCustomer").on("click", function (event){
 
 });
     console.log( "ready!" );
+});
+
 });
 
 
