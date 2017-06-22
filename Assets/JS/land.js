@@ -1,15 +1,15 @@
 
-// Firebase call
+  // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCtqKlasKaY9o0K3A8dLVSwrUs8S8i9gso",
-    authDomain: "boot-3ff6b.firebaseapp.com",
-    databaseURL: "https://boot-3ff6b.firebaseio.com",
-    projectId: "boot-3ff6b",
-    storageBucket: "boot-3ff6b.appspot.com",
-    messagingSenderId: "591583751544"
-};
-
+    apiKey: "AIzaSyDh9kr2548vgUt-s4gexOeDklL2DnWzoGU",
+    authDomain: "devmapper-c8415.firebaseapp.com",
+    databaseURL: "https://devmapper-c8415.firebaseio.com",
+    projectId: "devmapper-c8415",
+    storageBucket: "devmapper-c8415.appspot.com",
+    messagingSenderId: "119059605410"
+  };
 firebase.initializeApp(config);
+
 var ref = firebase.database();
 
 
@@ -57,8 +57,8 @@ ref.ref().on("value", function(snapshot) {
 // Map settings
 function initAutocomplete() {
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 41.505493, lng: -81.681290 },
-        zoom: 11,
+        center: { lat: 41.503575, lng: -81.611931 },
+        zoom: 13,
         mapTypeId: 'roadmap'
     });
     window.mapInstance = map;
