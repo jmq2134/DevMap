@@ -13,7 +13,7 @@
     <!-- FIREBASE -->
     <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
     <!-- LINK TO DATA ENTRY JS -->
-    <script type="text/javascript" src="./Assets/JS/dataEntry.js"></script>
+    <script type="text/javascript" src="./Assets/JS/FIPentry.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- GOOGLE FONT FOR BRAND -->
@@ -84,6 +84,7 @@
                                     <th># of Units</th>
                                     <th>Sale Price</th>
                                     <th>Notes</th>
+                                    <th>Update</th>
                                 </tr>
                             </thead>
                             <tbody id="displayCustomerInfo">
@@ -154,24 +155,24 @@
                                         <div class="panel-body">
                                             <form class='modal-form'>
                                                 <div class="form-group">
-                                                    <label for="startDate_id">Date Entered</label>
-                                                    <input type="date" class="form-control" id="startDate_id">
+                                                    <label for="dateEntered_id">Date Entered</label>
+                                                    <input type="date" class="form-control" id="dateEntered_id">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="startDate_id">Owner</label>
-                                                    <input type="text" class="form-control" id="startDate_id">
+                                                    <label for="owner_id">Owner</label>
+                                                    <input type="text" class="form-control" id="owner_id">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="startDate_id"># of Units</label>
-                                                    <input type="number" class="form-control" id="startDate_id">
+                                                    <label for="numUnits_id"># of Units</label>
+                                                    <input type="number" class="form-control" id="numUnits_id">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="startDate_id">Sale Price</label>
-                                                    <input type="number" class="form-control" id="startDate_id">
+                                                    <label for="salePrice_id">Sale Price</label>
+                                                    <input type="number" class="form-control" id="salePrice_id">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="startDate_id">Notes</label>
-                                                    <textarea class = "form-control" rows = "5"></textarea>
+                                                    <label for="notes_id">Notes</label>
+                                                    <textarea class = "form-control" rows = "5" id="notes_id"></textarea>
                                                 </div>
                                             </form>
                                         </div>
