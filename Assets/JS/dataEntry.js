@@ -172,7 +172,7 @@ $(document).on("click", ".editClass", function (snap){  //when remove button is 
 	console.log($(this).siblings());
 	
 	var name = $(this).siblings().first(); //find info of the row where edit button is clicked, they are used to preload the pop ip window
-	var street1 = $(this).siblings(":nth-child(4)").children().first();
+	var street1 = $(this).siblings().first();
 	var street2 = street1.next();
 	var city = street2.next().next();
 	var state = city.next();
