@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FIP Development Tracker</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- mask for input area -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <!-- FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <!-- LINK TO DATA ENTRY JS -->
+    <script type="text/javascript" src="./Assets/JS/dataEntry.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- GOOGLE FONT FOR BRAND -->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,700i" rel="stylesheet">
+    <!-- Bootswatch Cosmos -->
+    <link rel="stylesheet" type="text/css" href="./Assets/CSS/bootswatch.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="./Assets/CSS/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand brand-logo" href="index.html">FIP Development Mapper</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Databases <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="FIPdatabase.html">FIP Development</a></li>
+                        <li role="separatorgit" class="divider"></li>
+                        <li><a href="CLEdatabase.html">CLE Development</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="LSdatabase.html">Lease Comparables</a></li>
+                    </ul>
+                    </li>
+                   <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maps <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="ALLdevMap.html">Combine All Maps</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="FIPdevMap.html">FIP Development</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="CLEdevMap.html">CLE Development</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="LSdevMap.html">Lease Comparables</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ADD SITE BUTTON -->
+    <div class="container">
+        <div class="row" id="customer-row">
+            <div class="col-lg-12" id="addCustomer">
+                <button type="submit" class="btn btn-primary addCustomerStyle" id="addCustomer" data-toggle="modal" data-target="#addCustomerModal"> Add A Site </button>
+            </div>
+        </div>
+        <!-- CUSTOMER DATA TABLE -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default ">
+                    <div class="panel-heading customer-panel">
+                        <h3 class="panel-title"><strong>Site Information</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Date Entered</th>
+                                    <th>Owner</th>
+                                    <th># of Units</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="displayCustomerInfo">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ADD CUSTOMER MODAL -->
+    <div class="modal fade" id="addCustomerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Add A Site</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <!-- LEFT PANEL -->
+                                <div class="col-lg-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <form class='modal-form'>
+                                                <div class="form-group">
+                                                    <label for="name_id">Site</label>
+                                                    <input type="text" class="form-control" id="name_id" placeholder="Person name, compnay name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <!-- Street 1 -->
+                                                    <label for="street1_id" class="control-label">Street Address 1</label>
+                                                    <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Street address, P.O. box, c/o">
+                                                </div>
+                                                <div class="form-group">
+                                                    <!-- Street 2 -->
+                                                    <label for="street2_id" class="control-label">Street Address 2 (optional) </label>
+                                                    <input type="text" class="form-control" id="street2_id" name="street2" placeholder="Apartment, suite, unit, building, floor, etc.">
+                                                </div>
+                                                <div class="form-group">
+                                                    <!-- City-->
+                                                    <label for="city_id" class="control-label">City</label>
+                                                    <input type="text" class="form-control" id="city_id" name="city" placeholder="Cleveland">
+                                                </div>
+                                                <div class="form-group">
+                                                    <!-- State Button -->
+                                                    <label for="state_id" class="control-label">State</label>
+                                                    <select class="form-control" id="state_id">
+                                                        <option value="OH">Ohio</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <!-- Zip Code-->
+                                                    <label for="zip_id" class="control-label">Zip Code</label>
+                                                    <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- RIGHT PANEL -->
+                                <div class="col-lg-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <form class='modal-form'>
+                                                <div class="form-group">
+                                                    <label for="startDate_id">Date Entered</label>
+                                                    <input type="date" class="form-control" id="startDate_id">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- MODAL BUTTONS - SAVE & CLOSE -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="saveCustomerInfo">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
