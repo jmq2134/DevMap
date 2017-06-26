@@ -46,7 +46,7 @@ $("#saveCustomerInfo").on("click", function(snap){
             dateEntered:$("#dateEntered_id").val().trim(),
             owner:$("#owner_id").val().trim(),
             numUnits:$("#numUnits_id").val().trim(),
-            salePrice:$("#salePrice_id").val().trim(),
+            salePrice:$("#salePrice_id").val().trim().currencyFormat(),
             notes:$("#notes_id").val().trim(),
         };
 
@@ -171,10 +171,15 @@ database.ref().on("value", function(snap){
 // REMOVE BUTTON FUNCTION
 $(document).on("click", ".removeClass", function (snap){  //when remove button is clicked
 	var street1 = $(this).siblings(":nth-child(4)").children().first(); //find all area that contains address
+	console.log(street1);
 	var street2 = street1.next();
+	console.log(street2);
 	var city = street2.next().next();
+	console.log(city);
 	var state = city.next();
+	console.log(state);
 	var zip = state.next();
+	console.log(zip);
 
 	database.ref().once('value').then(function(snapshot) {
 		var sv=snapshot.val();
@@ -194,18 +199,22 @@ $(document).on("click", ".removeClass", function (snap){  //when remove button i
 });
 
 
-$(document).on("click", ".editClass", function (snap){  //when remove button is clicked
+$(document).on("click", ".editClass", function (snap){  //when edit button is clicked
 	isEdit = 1;
 
 	console.log($(this).siblings());
 	
 	var name = $(this).siblings().first(); //find info of the row where edit button is clicked, they are used to preload the pop ip window
-	var street1 = $(this).siblings().first();
+	var street1 = $(this).siblings(":nth-child(2)").children().first();
 	var street2 = street1.next();
 	var city = street2.next().next();
 	var state = city.next();
 	var zip = state.next();
-	var startDate = zip.next();
+	var dateEntered = $(this).siblings(":nth-child(3)").first();
+	var owner = $(this).siblings(":nth-child(4)").first();
+	var numUnits = $(this).siblings(":nth-child(5)").first();
+	var salePrice = $(this).siblings(":nth-child(6)").first();
+	var notes = $(this).siblings(":nth-child(7)").first();
 
 	//prefill all the input area for the pop up window
 	$("#exampleModalLongTitle").html("Edit Customer Information");
@@ -215,7 +224,11 @@ $(document).on("click", ".editClass", function (snap){  //when remove button is 
 	$("#city_id").val(city.attr("data-name"));
 	$("#state_id").val(state.attr("data-name"));
 	$("#zip_id").val(zip.attr("data-name"));
-	$("#startDate_id").val(startDate.attr("data-name"));
+	$("#dateEntered_id").val(dateEntered.attr("data-name"));
+	$("#owner_id").val(owner.attr("data-name"));
+	$("#numUnits_id").val(numUnits.attr("data-name"));
+	$("#salePrice_id").val(salePrice.attr("data-name"));
+	$("#notes_id").val(notes.attr("data-name"));
 
 	// find the right child in database
 	database.ref().once('value').then(function(snapshot) {
