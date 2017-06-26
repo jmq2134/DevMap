@@ -46,7 +46,7 @@ $("#saveCustomerInfo").on("click", function(snap){
             dateEntered:$("#dateEntered_id").val().trim(),
             owner:$("#owner_id").val().trim(),
             numUnits:$("#numUnits_id").val().trim(),
-            salePrice:$("#salePrice_id").val().trim().currencyFormat(),
+            salePrice:$("#salePrice_id").val().trim(),
             notes:$("#notes_id").val().trim(),
         };
 
@@ -170,16 +170,11 @@ database.ref().on("value", function(snap){
 
 // REMOVE BUTTON FUNCTION
 $(document).on("click", ".removeClass", function (snap){  //when remove button is clicked
-	var street1 = $(this).siblings(":nth-child(4)").children().first(); //find all area that contains address
-	console.log(street1);
-	var street2 = street1.next();
-	console.log(street2);
+	var street1 = $(this).siblings(":nth-child(2)").children().first(); //find all area that contains address
+	var street2 = street1.next();;
 	var city = street2.next().next();
-	console.log(city);
 	var state = city.next();
-	console.log(state);
 	var zip = state.next();
-	console.log(zip);
 
 	database.ref().once('value').then(function(snapshot) {
 		var sv=snapshot.val();
