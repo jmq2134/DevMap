@@ -54,7 +54,9 @@ ref.ref().on("value", function(snapshot) {
 })
 
 var map;
-var radius; 
+var radiusHalfMile;
+var radiusMile;
+var radiusMileHalf; 
 
 // Map settings
 function initMap() {
@@ -64,17 +66,42 @@ function initMap() {
         mapTypeId: 'roadmap'
             });
 
-     radius = new google.maps.Circle({
-        strokeColor: '#FF0000',
+
+     // .5 mile radius
+     radiusHalfMile = new google.maps.Circle({
+        strokeColor: '#76D7C4',
         strokeOpacity: 0.8,
         strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35,
+        fillColor: '#76D7C4',
+        fillOpacity: 0.25,
         map: map,
         center: { lat: 41.503575, lng: -81.611931 },
-        radius: 2000   
+        radius: 804.672 
      });   
 
+     // 1.0 mile radius
+     radiusMile = new google.maps.Circle({
+        strokeColor: '#76D7C4',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#76D7C4',
+        fillOpacity: 0.25,
+        map: map,
+        center: { lat: 41.503575, lng: -81.611931 },
+        radius: 1609.34   
+     });
+
+    // 1.0 mile radius
+     radiusMileHalf = new google.maps.Circle({
+        strokeColor: '#76D7C4',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#76D7C4',
+        fillOpacity: 0.25,
+        map: map,
+        center: { lat: 41.503575, lng: -81.611931 },
+        radius: 2414.02   
+     });
 
     window.mapInstance = map;
 };
