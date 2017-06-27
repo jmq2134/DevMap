@@ -1,5 +1,4 @@
-
-  // Initialize Firebase
+// Initialize Firebase
 var config = {
     apiKey: "AIzaSyDh9kr2548vgUt-s4gexOeDklL2DnWzoGU",
     authDomain: "devmapper-c8415.firebaseapp.com",
@@ -21,17 +20,17 @@ function geocodeAddress(location) {
     }, function(results, status) {
         // Drop a pin on map for each geocoded address
         if (status == 'OK') {
-            // window.mapInstance.setCenter(results[0].geometry.location);
+            window.mapInstance.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: window.mapInstance,
-                // position: results[0].geometry.location,
+                position: results[0].geometry.location,
                 title: location.name
             });
 
             // Window labels
             var infowindow =  new google.maps.InfoWindow({
                 content: location.name + "<br>" + location.street1 + ' ' + location.street2 + "<br>" + location.city + ' ' + location.state + ' ' + location.zip,
-                map: map
+                // map: map
             });
 
             google.maps.event.addListener(marker, 'click', function() {
@@ -73,7 +72,7 @@ function initMap() {
         fillOpacity: 0.35,
         map: map,
         center: { lat: 41.503575, lng: -81.611931 },
-        radius: 20000    
+        radius: 2000   
      });   
 
 
