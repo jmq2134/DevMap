@@ -50,21 +50,22 @@ ref.ref().on("value", function(snapshot) {
     var locations = snapshot.val();
     for (var key in locations) {
         var location = locations[key];
-
         geocodeAddress(location);
     }
 })
 
+var map;
+var radius; 
 
 // Map settings
 function initMap() {
-    var map = new google.maps.Map(document.getElementById('map'), {
+     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 41.503575, lng: -81.611931 },
         zoom: 13,
         mapTypeId: 'roadmap'
             });
 
-     var radius = new google.maps.Circle({
+     radius = new google.maps.Circle({
         strokeColor: '#FF0000',
         strokeOpacity: 0.8,
         strokeWeight: 2,
@@ -73,13 +74,14 @@ function initMap() {
         map: map,
         center: { lat: 41.503575, lng: -81.611931 },
         radius: 20000    
-     })   
+     });   
 
 
-
-    
     window.mapInstance = map;
 };
+
+
+
 
 
 
