@@ -21,10 +21,10 @@ function geocodeAddress(location) {
     }, function(results, status) {
         // Drop a pin on map for each geocoded address
         if (status == 'OK') {
-            window.mapInstance.setCenter(results[0].geometry.location);
+            // window.mapInstance.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: window.mapInstance,
-                position: results[0].geometry.location,
+                // position: results[0].geometry.location,
                 title: location.name
             });
 
@@ -62,18 +62,20 @@ function initMap() {
         center: { lat: 41.503575, lng: -81.611931 },
         zoom: 13,
         mapTypeId: 'roadmap'
+            });
 
-     // var radius = new google.maps.Circle({
-     //    strokeColor: '#FF0000',
-     //    strokeOpacity: 0.8,
-     //    strokeWeight: 2,
-     //    fillColor: '#FF0000',
-     //    fillOpacity: 0.35,
-     //    map: map,
-     //    radius: 20000    
-     // })   
+     var radius = new google.maps.Circle({
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35,
+        map: map,
+        center: { lat: 41.503575, lng: -81.611931 },
+        radius: 20000    
+     })   
 
-    });
+
 
     
     window.mapInstance = map;

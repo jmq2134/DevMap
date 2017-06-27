@@ -163,7 +163,8 @@ database.ref().on("value", function(snap){
 		dateEnteredTd.html(dateEntered);
 		ownerTd.html(owner);
 		numUnitsTd.html(numUnits);
-		salePriceTd.html(salePrice);
+		var saleFormat = currencyFormat(parseInt(salePrice));
+		salePriceTd.html(saleFormat);
 		notesTd.html(notes);
 	}
 });
