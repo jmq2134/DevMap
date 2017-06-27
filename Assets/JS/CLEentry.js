@@ -1,12 +1,12 @@
 $( document ).ready(function() {
 // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyCZQS80-VsG33HEQWU0cuS5gq_ENmWnFEk",
-    authDomain: "lsmapper.firebaseapp.com",
-    databaseURL: "https://lsmapper.firebaseio.com",
-    projectId: "lsmapper",
-    storageBucket: "",
-    messagingSenderId: "494862326936"
+    apiKey: "AIzaSyB0-qMVAZlma3NqGdeNa52flabRwVIKyuk",
+    authDomain: "clemapper.firebaseapp.com",
+    databaseURL: "https://clemapper.firebaseio.com",
+    projectId: "clemapper",
+    storageBucket: "clemapper.appspot.com",
+    messagingSenderId: "935789080806"
   };
   firebase.initializeApp(config);
 
