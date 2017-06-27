@@ -39,10 +39,17 @@ body {
     color: #FFF;
 }
 
-/*thead {
-    border-bottom: 2px solid navy;
-}*/
+.notes-Td-css {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
+.notes-Td-css:hover {
+    overflow: visible;
+    white-space: pre-wrap;
+}
 
 /* MAP STYLES */
 

@@ -122,7 +122,7 @@ database.ref().on("value", function(snap){
 		ownerTd.attr("data-name", owner);
 		numUnitsTd.attr("data-name", numUnits);
 		salePriceTd.attr("data-name", salePrice);
-		notesTd.attr("data-name", notes);
+		notesTd.attr("data-name", notes).addClass("notes-Td-css");
 
 		//combine street, city, state and zip to a full address
 		addrTd.append(street1Sp);
