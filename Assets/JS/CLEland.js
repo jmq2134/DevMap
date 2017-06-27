@@ -23,6 +23,7 @@ function geocodeAddress(location) {
             window.mapInstance.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: window.mapInstance,
+                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
                 animation: google.maps.Animation.DROP,
                 position: results[0].geometry.location,
                 title: location.name
