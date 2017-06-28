@@ -112,7 +112,7 @@ database.ref().on("value", function(snap){
 		var notesTd = $("<td>");
 
 		//save value to data attribute. They will be used in editing mode to preload customer info the pop up window
-		nameTd.attr("data-name", name);
+		nameTd.attr("data-name", name).addClass("name-div");
 		street1Sp.attr("data-name", street1);
 		street2Sp.attr("data-name", street2);
 		citySp.attr("data-name", city);
@@ -133,7 +133,7 @@ database.ref().on("value", function(snap){
 		addrTd.append(zipSp);
 
 		//add edit and remove button for each row
-		var editTd = $ ("<button> Edit </button>");
+		var editTd = $("<button> Edit </button>");
 		var removeTd = $("<button> Remove </button>");
 		editTd.addClass("editClass button-div"); //add class to edit button
 		editTd.attr("data-toggle","modal"); //add attr so that edit can target to the pop up window

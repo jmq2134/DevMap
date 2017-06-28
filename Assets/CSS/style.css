@@ -39,9 +39,15 @@ body {
     color: #FFF;
 }
 
-/*th{
-    min-width: 80px;
-    text-align: center;
+.name-div {
+    min-width: 200px;
+}
+
+/*.table {
+    height: 600px !important;
+    width: 100%;
+    overflow: scroll;
+    display:block;
 }*/
 
 .button-div {
