@@ -74,7 +74,7 @@ function initMap() {
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#76D7C4',
-        fillOpacity: 0.25,
+        fillOpacity: 0.20,
         map: map,
         center: { lat: 41.503575, lng: -81.611931 },
         radius: 804.672 
@@ -86,7 +86,7 @@ function initMap() {
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#76D7C4',
-        fillOpacity: 0.25,
+        fillOpacity: 0.20,
         map: map,
         center: { lat: 41.503575, lng: -81.611931 },
         radius: 1609.34   
@@ -98,7 +98,7 @@ function initMap() {
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#76D7C4',
-        fillOpacity: 0.25,
+        fillOpacity: 0.20,
         map: map,
         center: { lat: 41.503575, lng: -81.611931 },
         radius: 2414.02   

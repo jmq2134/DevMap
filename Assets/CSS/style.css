@@ -39,9 +39,18 @@ body {
     color: #FFF;
 }
 
-th{
+/*th{
     min-width: 80px;
     text-align: center;
+}*/
+
+.button-div {
+    min-width: 100px;
+    margin-top: 5px;
+}
+
+.date-enter-td {
+    min-width: 100px;
 }
 
 .notes-Td-css {

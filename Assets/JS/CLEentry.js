@@ -118,7 +118,7 @@ database.ref().on("value", function(snap){
 		citySp.attr("data-name", city);
 		stateSp.attr("data-name", state);
 		zipSp.attr("data-name", zip);
-		dateEnteredTd.attr("data-name", dateEntered);
+		dateEnteredTd.attr("data-name", dateEntered).addClass("date-enter-td");
 		ownerTd.attr("data-name", owner);
 		numUnitsTd.attr("data-name", numUnits);
 		salePriceTd.attr("data-name", salePrice);
@@ -135,10 +135,10 @@ database.ref().on("value", function(snap){
 		//add edit and remove button for each row
 		var editTd = $ ("<button> Edit </button>");
 		var removeTd = $("<button> Remove </button>");
-		editTd.addClass("editClass"); //add class to edit button
+		editTd.addClass("editClass button-div"); //add class to edit button
 		editTd.attr("data-toggle","modal"); //add attr so that edit can target to the pop up window
 		editTd.attr("data-target","#addCustomerModal"); //same as above
-		removeTd.addClass("removeClass"); //add class to remove button
+		removeTd.addClass("removeClass button-div"); //add class to remove button
 
 
 		customerInfoTr.append(nameTd);
