@@ -39,6 +39,11 @@ body {
     color: #FFF;
 }
 
+th{
+    min-width: 80px;
+    text-align: center;
+}
+
 .notes-Td-css {
     max-width: 300px;
     overflow: hidden;

@@ -1,12 +1,12 @@
 $( document ).ready(function() {
 // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyDh9kr2548vgUt-s4gexOeDklL2DnWzoGU",
-    authDomain: "devmapper-c8415.firebaseapp.com",
-    databaseURL: "https://devmapper-c8415.firebaseio.com",
-    projectId: "devmapper-c8415",
-    storageBucket: "devmapper-c8415.appspot.com",
-    messagingSenderId: "119059605410"
+    apiKey: "AIzaSyCZQS80-VsG33HEQWU0cuS5gq_ENmWnFEk",
+    authDomain: "lsmapper.firebaseapp.com",
+    databaseURL: "https://lsmapper.firebaseio.com",
+    projectId: "lsmapper",
+    storageBucket: "lsmapper.appspot.com",
+    messagingSenderId: "494862326936"
   };
   firebase.initializeApp(config);
 
