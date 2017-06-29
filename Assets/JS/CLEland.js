@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 
 var ref = firebase.database();
 
+console.log("dave smells");
+
 setTimeout( geocodeAddress, 250)
 
 // Geocode addresses from customer data table on index.html
@@ -24,7 +26,7 @@ function geocodeAddress(location) {
             window.mapInstance.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: window.mapInstance,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
                 animation: google.maps.Animation.DROP,
                 position: results[0].geometry.location,
                 title: location.name
@@ -42,7 +44,7 @@ function geocodeAddress(location) {
 
             // Error alert
         } else {
-            alert("geocode of " + address + " failed:" + status);
+            alert("geocode of " + location.name + " failed:" + status);
         }
     });
 }

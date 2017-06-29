@@ -40,7 +40,7 @@ function geocodeAddress(location) {
 
             // Error alert
         } else {
-            alert("geocode of " + address + " failed:" + status);
+            alert("geocode of " + location.name + " failed:" + status);
         }
     });
 }
