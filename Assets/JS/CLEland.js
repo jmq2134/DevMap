@@ -11,9 +11,7 @@ firebase.initializeApp(config);
 
 var ref = firebase.database();
 
-console.log("dave smells");
-
-setTimeout( geocodeAddress, 250)
+setTimeout( geocodeAddress, 500)
 
 // Geocode addresses from customer data table on index.html
 function geocodeAddress(location) {
