@@ -43,11 +43,12 @@ body {
     min-width: 200px;
 }
 
-thead {
+/*thead {
     border-bottom: 1px solid grey;
     margin-bottom: 5px;
     background-color: grey;
-}
+}*/
+
 /*.table {
     height: 600px !important;
     width: 100%;

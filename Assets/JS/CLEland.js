@@ -49,13 +49,15 @@ function geocodeAddress(location) {
                 infowindow.open(map, this);
             });
         if (status == 'OVER_QUERY_LIMIT') {
-            
+                setTimeout(function() {
+                geocodeAddress(Location);
+            }, 5000);
 
         }
 
             // Error alert
         } else {
-            alert("geocode of " + location.name + " failed:" + status);
+            alert("geocode of " + location.name + " failed: " + status);
         }
     });
 }
