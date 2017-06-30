@@ -1,0 +1,23 @@
+{
+  "name": "devmap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "geocoder": "^0.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmq2134/DevMap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmq2134/DevMap/issues"
+  },
+  "homepage": "https://github.com/jmq2134/DevMap#readme"
+}
