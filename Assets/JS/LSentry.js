@@ -44,9 +44,14 @@ $("#saveCustomerInfo").on("click", function(snap){
             state:$("#state_id").val().trim(),
             zip:$("#zip_id").val().trim(),
             dateEntered:$("#dateEntered_id").val().trim(),
-            owner:$("#owner_id").val().trim(),
-            numUnits:$("#numUnits_id").val().trim(),
+            dateSold:$("#dateSold_id").val().trim(),
+            buildingSF:$("#buildingSF_id").val().trim(),
+            acreage:$("#acreage_id").val().trim(),
             salePrice:$("#salePrice_id").val().trim(),
+            numUnits:$("#numUnits_id").val().trim(),
+            oneBed:$("#oneBed_id").val().trim(),
+            twoBed:$("#twoBed_id").val().trim(),
+            threeBed:$("#threeBed_id").val().trim(),
             notes:$("#notes_id").val().trim(),
         };
 
@@ -54,7 +59,6 @@ $("#saveCustomerInfo").on("click", function(snap){
 
         database.ref().push(customerData);
 	
-
 		$(".modal-form input, .modal-form textarea").val('');
 	}
 
@@ -68,9 +72,14 @@ $("#saveCustomerInfo").on("click", function(snap){
             state:$("#state_id").val().trim(),
             zip:$("#zip_id").val().trim(),
             dateEntered:$("#dateEntered_id").val().trim(),
-            owner:$("#owner_id").val().trim(),
-            numUnits:$("#numUnits_id").val().trim(),
+            dateSold:$("#dateSold_id").val().trim(),
+            buildingSF:$("#buildingSF_id").val().trim(),
+            acreage:$("#acreage_id").val().trim(),
             salePrice:$("#salePrice_id").val().trim(),
+            numUnits:$("#numUnits_id").val().trim(),
+            oneBed:$("#oneBed_id").val().trim(),
+            twoBed:$("#twoBed_id").val().trim(),
+            threeBed:$("#threeBed_id").val().trim(),
             notes:$("#notes_id").val().trim(),
 		});
 	}
@@ -83,6 +92,7 @@ database.ref().on("value", function(snap){
 	var sv=snap.val();
 	for (var key in sv) {
 		var thisObject=sv[key];
+
 		//for each child in the database, do the following
 		var name = thisObject.name;
 		var street1 = thisObject.street1;
@@ -91,9 +101,16 @@ database.ref().on("value", function(snap){
 		var state = thisObject.state;
 		var zip = thisObject.zip;
 		var dateEntered = thisObject.dateEntered;
-		var owner = thisObject.owner;
+		var dateSold = thisObject.dateSold;
+		var salePrice = thisObject.salePrice;	
+		var buildingSF = thisObject.buildingSF;
+		var acreage = thisObject.acreage;
+		var costAcre = thisObject.salePriceTd / thisObject.acreage;
 		var numUnits = thisObject.numUnits;
-		var salePrice = thisObject.salePrice;
+		var costAcre = thisObject.salePriceTd / thisObject.numUnits;
+		var oneBed = thisObject.oneBed;
+		var twoBed = thisObject.twoBed;
+		var threeBed = thisObject.threeBed;
 		var notes = thisObject.notes;
 
 		//create field to contain customer information
@@ -106,9 +123,16 @@ database.ref().on("value", function(snap){
 		var stateSp = $("<span>");
 		var zipSp = $("<span>");
 		var dateEnteredTd = $("<td>");
-		var ownerTd = $("<td>");
-		var numUnitsTd = $("<td>");
+		var dateSoldTd = $("<td>");
 		var salePriceTd = $("<td>");
+		var buildingSfTd = $("<td>");
+		var acreageTd = $("<td>");
+		var costAcreTd = $("<td>");
+		var numUnitsTd = $("<td>");
+		var costUnitTd = $("<td>");
+		var oneBedTd = $("<td>");
+		var twoBedTd = $("<td>");
+		var threeBedTd = $("<td>");
 		var notesTd = $("<td>");
 
 		//save value to data attribute. They will be used in editing mode to preload customer info the pop up window
@@ -119,9 +143,16 @@ database.ref().on("value", function(snap){
 		stateSp.attr("data-name", state);
 		zipSp.attr("data-name", zip);
 		dateEnteredTd.attr("data-name", dateEntered);
-		ownerTd.attr("data-name", owner);
-		numUnitsTd.attr("data-name", numUnits);
+		dateSoldTd.attr("data-name", dateSold);
 		salePriceTd.attr("data-name", salePrice);
+		buildingSF.attr("data-name", buildingSF);
+		acreageTd.attr("data-name", acreage);
+		costAcreTd.attr("data-name", costAcre);
+		numUnitsTd.attr("data-name", numUnits);		
+		costUnitTd.attr("data-name", costUnit);
+		oneBedTd.attr("data-name", oneBed);
+		twoBedTd.attr("data-name", twoBed);
+		threeBedTd.attr("data-name", threeBed);
 		notesTd.attr("data-name", notes).addClass("notes-Td-css");
 
 		//combine street, city, state and zip to a full address
