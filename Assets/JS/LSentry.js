@@ -44,7 +44,7 @@ $("#saveCustomerInfo").on("click", function(snap){
             state:$("#state_id").val().trim(),
             zip:$("#zip_id").val().trim(),
             dateEntered:$("#dateEntered_id").val().trim(),
-            dateSold:$("#dateSold_id").val().trim(),
+            dateSold: $("#dateSold_id").val().trim(),
             buildingSF:$("#buildingSF_id").val().trim(),
             acreage:$("#acreage_id").val().trim(),
             salePrice:$("#salePrice_id").val().trim(),
@@ -105,9 +105,9 @@ database.ref().on("value", function(snap){
 		var salePrice = thisObject.salePrice;	
 		var buildingSF = thisObject.buildingSF;
 		var acreage = thisObject.acreage;
-		var costAcre = thisObject.salePriceTd / thisObject.acreage;
+		var costAcre = (thisObject.salePriceTd / thisObject.acreage);
 		var numUnits = thisObject.numUnits;
-		var costAcre = thisObject.salePriceTd / thisObject.numUnits;
+		var costAcre = (thisObject.salePriceTd / thisObject.numUnits);
 		var oneBed = thisObject.oneBed;
 		var twoBed = thisObject.twoBed;
 		var threeBed = thisObject.threeBed;
@@ -175,14 +175,29 @@ database.ref().on("value", function(snap){
 		customerInfoTr.append(nameTd);
 		customerInfoTr.append(addrTd);
 		customerInfoTr.append(dateEnteredTd);
-		customerInfoTr.append(ownerTd);
-		customerInfoTr.append(numUnitsTd);
+		customerInfoTr.append(dateSoldTd);
 		customerInfoTr.append(salePriceTd);
+		customerInfoTr.append(buildingSfTd);
+		customerInfoTr.append(acreageTd);
+		customerInfoTr.append(costAcreTd);
+		customerInfoTr.append(numUnitsTd);
+		customerInfoTr.append(costUnitTd);
+		customerInfoTr.append(oneBedTd);
+		customerInfoTr.append(twoBedTd);
+		customerInfoTr.append(threeBedTd);
 		customerInfoTr.append(notesTd);
 		customerInfoTr.append(editTd);
 		customerInfoTr.append(removeTd);
 
 		$("#displayCustomerInfo").append(customerInfoTr);
+
+		//Convert to currency
+		var saleFormat = currencyFormat(parseInt(salePrice));
+		var costUnitFormat = currencyFormat(parseInt(costUnit));
+		var costAcreFormat = currencyFormat(parseInt(costAcre));
+		var oneBedFormat = currencyFormat(parseInt(oneBed));
+		var twoBedFormat = currencyFormat(parseInt(twoBed));
+		var threeBedFormat = currencyFormat(parseInt(threeBed));
 
 		//show all infor on main page
 		nameTd.html(name);
@@ -192,10 +207,16 @@ database.ref().on("value", function(snap){
 		stateSp.html(state + '&nbsp');
 		zipSp.html(zip);
 		dateEnteredTd.html(dateEntered);
-		ownerTd.html(owner);
-		numUnitsTd.html(numUnits);
-		var saleFormat = currencyFormat(parseInt(salePrice));
+		dateSoldTd.html(dateSold);
 		salePriceTd.html(saleFormat);
+		buildingSfTd.html(buildingSF);
+		acreageTd.html(acreage);
+		costAcreTd.html(costAcreFormat);
+		numUnitsTd.html(numUnits);
+		costUnitTd.html(costUnitFormat);
+		oneBedTd.html(oneBedFormat);
+		twoBedTd.html(twoBedFormat);
+		threeBedTd.html(threeBedFormat);
 		notesTd.html(notes);
 	}
 });
