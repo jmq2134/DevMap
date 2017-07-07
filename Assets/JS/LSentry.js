@@ -107,7 +107,7 @@ database.ref().on("value", function(snap){
 		var acreage = thisObject.acreage;
 		var costAcre = (thisObject.salePriceTd / thisObject.acreage);
 		var numUnits = thisObject.numUnits;
-		var costAcre = (thisObject.salePriceTd / thisObject.numUnits);
+		var costUnit = (thisObject.salePriceTd / thisObject.numUnits);
 		var oneBed = thisObject.oneBed;
 		var twoBed = thisObject.twoBed;
 		var threeBed = thisObject.threeBed;
@@ -145,7 +145,7 @@ database.ref().on("value", function(snap){
 		dateEnteredTd.attr("data-name", dateEntered);
 		dateSoldTd.attr("data-name", dateSold);
 		salePriceTd.attr("data-name", salePrice);
-		buildingSF.attr("data-name", buildingSF);
+		buildingSfTd.attr("data-name", buildingSF);
 		acreageTd.attr("data-name", acreage);
 		costAcreTd.attr("data-name", costAcre);
 		numUnitsTd.attr("data-name", numUnits);		
@@ -259,10 +259,15 @@ $(document).on("click", ".editClass", function (snap){  //when edit button is cl
 	var state = city.next();
 	var zip = state.next();
 	var dateEntered = $(this).siblings(":nth-child(3)").first();
-	var owner = $(this).siblings(":nth-child(4)").first();
-	var numUnits = $(this).siblings(":nth-child(5)").first();
-	var salePrice = $(this).siblings(":nth-child(6)").first();
-	var notes = $(this).siblings(":nth-child(7)").first();
+	var dateSold = $(this).siblings(":nth-child(4)").first();
+	var buildingSF = $(this).siblings(":nth-child(5)").first();
+	var acreage = $(this).siblings(":nth-child(6)").first();
+	var salePrice = $(this).siblings(":nth-child(7)").first();
+	var numUnits = $(this).siblings(":nth-child(8)").first();
+	var oneBed = $(this).siblings(":nth-child(9)").first();
+	var twoBed = $(this).siblings(":nth-child(10)").first();
+	var threeBed = $(this).siblings(":nth-child(11)").first();
+	var notes = $(this).siblings(":nth-child(12)").first();
 
 	//prefill all the input area for the pop up window
 	$("#exampleModalLongTitle").html("Edit Customer Information");
@@ -273,9 +278,14 @@ $(document).on("click", ".editClass", function (snap){  //when edit button is cl
 	$("#state_id").val(state.attr("data-name"));
 	$("#zip_id").val(zip.attr("data-name"));
 	$("#dateEntered_id").val(dateEntered.attr("data-name"));
-	$("#owner_id").val(owner.attr("data-name"));
-	$("#numUnits_id").val(numUnits.attr("data-name"));
+	$("dateSold_id").val(dateSold.attr("data-name"));
+	$("buildingSF_id").val(buildingSF.attr("data-name"));
+	$("acreage_id").val(acreage.attr("data-name"));
 	$("#salePrice_id").val(salePrice.attr("data-name"));
+	$("#numUnits_id").val(numUnits.attr("data-name"));
+	$("#oneBed_id").val(oneBed.attr("data-name"));
+	$("#twoBed_id").val(twoBed.attr("data-name"));
+	$("#threeBed_id").val(threeBed.attr("data-name"));
 	$("#notes_id").val(notes.attr("data-name"));
 
 	// find the right child in database
