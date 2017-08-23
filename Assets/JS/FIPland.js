@@ -11,6 +11,16 @@ firebase.initializeApp(config);
 
 var ref = firebase.database();
 
+// Location array
+ref.ref().on("value", function(snapshot) {
+    var locations = snapshot.val();
+    for (var key in locations) {
+        var location = locations[key];
+        console.log(location);
+        geocodeAddress(location);
+
+    }
+})
 
 // Geocode addresses from customer data table on index.html
 function geocodeAddress(location) {
@@ -18,8 +28,9 @@ function geocodeAddress(location) {
     geocoder.geocode({
         'address': location.street1 + ' ' + location.city + ' ' + location.state + ' ' + location.zip
     }, function(results, status) {
-        // Drop a pin on map for each geocoded address
+        
         if (status == 'OK') {
+            // Drop a pin on map for each geocoded address
             window.mapInstance.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
                 map: window.mapInstance,

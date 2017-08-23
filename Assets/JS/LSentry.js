@@ -105,9 +105,9 @@ database.ref().on("value", function(snap){
 		var salePrice = thisObject.salePrice;	
 		var buildingSF = thisObject.buildingSF;
 		var acreage = thisObject.acreage;
-		var costAcre = (thisObject.salePriceTd / thisObject.acreage);
+		var costAcre = (parseInt(salePrice) / parseInt(acreage));
 		var numUnits = thisObject.numUnits;
-		var costUnit = (thisObject.salePriceTd / thisObject.numUnits);
+		var costUnit = (parseInt(salePrice) / parseInt(numUnits));
 		var oneBed = thisObject.oneBed;
 		var twoBed = thisObject.twoBed;
 		var threeBed = thisObject.threeBed;
@@ -252,25 +252,25 @@ $(document).on("click", ".editClass", function (snap){  //when edit button is cl
 
 	console.log($(this).siblings());
 	
-	var name = $(this).siblings().first(); //find info of the row where edit button is clicked, they are used to preload the pop ip window
-	var street1 = $(this).siblings(":nth-child(2)").children().first();
+	var name = $(this).siblings().first(); // working
+	var street1 = $(this).siblings(":nth-child(2)").children().first(); // working
 	var street2 = street1.next();
-	var city = street2.next().next();
-	var state = city.next();
-	var zip = state.next();
-	var dateEntered = $(this).siblings(":nth-child(3)").first();
+	var city = street2.next().next(); // working
+	var state = city.next(); // working
+	var zip = state.next(); // working
+	var dateEntered = $(this).siblings(":nth-child(3)").first(); // working
 	var dateSold = $(this).siblings(":nth-child(4)").first();
 	var buildingSF = $(this).siblings(":nth-child(5)").first();
 	var acreage = $(this).siblings(":nth-child(6)").first();
-	var salePrice = $(this).siblings(":nth-child(7)").first();
-	var numUnits = $(this).siblings(":nth-child(8)").first();
-	var oneBed = $(this).siblings(":nth-child(9)").first();
-	var twoBed = $(this).siblings(":nth-child(10)").first();
-	var threeBed = $(this).siblings(":nth-child(11)").first();
-	var notes = $(this).siblings(":nth-child(12)").first();
+	var salePrice = $(this).siblings(":nth-child(8)").first();
+	var numUnits = $(this).siblings(":nth-child(9)").first(); // working
+	var oneBed = $(this).siblings(":nth-child(11)").first(); // working
+	var twoBed = $(this).siblings(":nth-child(12)").first(); // working
+	var threeBed = $(this).siblings(":nth-child(13)").first(); // working
+	var notes = $(this).siblings(":nth-child(14)").first(); // working
 
 	//prefill all the input area for the pop up window
-	$("#exampleModalLongTitle").html("Edit Customer Information");
+	$("#exampleModalLongTitle").html("Edit Lease Comparable");
 	$("#name_id").val(name.attr("data-name"));
 	$("#street1_id").val(street1.attr("data-name"));
 	$("#street2_id").val(street2.attr("data-name"));

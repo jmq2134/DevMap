@@ -48,6 +48,7 @@ function geocodeAddress(location) {
             google.maps.event.addListener(marker, 'click', function() {
                 infowindow.open(map, this);
             });
+        // Query limit alert    
         if (status == 'OVER_QUERY_LIMIT') {
                 setTimeout(function() {
                 geocodeAddress(Location);
@@ -55,7 +56,7 @@ function geocodeAddress(location) {
 
         }
 
-            // Error alert
+        // Error alert
         } else {
             alert("geocode of " + location.name + " failed: " + status);
         }
