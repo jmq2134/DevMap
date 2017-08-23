@@ -19,13 +19,23 @@ const config = {
 firebase.initializeApp(config);
 
 // Get elements
-const txtEmail = document.getElementById('txtEmail');
-const txtPassword = document.getElementById('txtPassword');
-const btnLogin = document.getElementById('btnLogin');
-const butnSignUp = document.getElementById('btnSignUp');
+
 
 // Add login event
-btnLogin.addEventListener('click', e=> {
+$(".btnLogin").onclick = function(){
+
+	const txtEmail = document.getElementById('txtEmail');
+console.log(txtEmail);
+
+const txtPassword = document.getElementById('txtPassword');
+console.log(txtPassword);
+
+const btnLogin = document.getElementById('btnLogin');
+console.log(btnLogin);
+
+const btnSignUp = document.getElementById('btnSignUp');
+console.log(btnSignUp);
+
 	// Get email and pw
 	const email = txtEmail.value;
 	const pass = txtPassword.value;
@@ -34,7 +44,9 @@ btnLogin.addEventListener('click', e=> {
 	const promise = auth.signInWithEmailAndPassword(email, pass)
 	promise.catch(e => console.log(e.message));
 
-});
+}
+
+
 
 
 }());
