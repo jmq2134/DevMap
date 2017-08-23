@@ -2,6 +2,7 @@
 
 body {
     background: url(../Images/vintage-pecan-free-stretch-blog-background-cream.jpg);
+    font-family: 'Libre Franklin', sans-serif;
 }
 
 .brand-logo {
@@ -12,6 +13,9 @@ body {
     letter-spacing: 2px;
 }
 
+nav-option {
+    font-family: 'Libre Franklin', sans-serif;
+}
 
 /*  INDEX STYLES */
 
