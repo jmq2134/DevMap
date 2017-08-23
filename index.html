@@ -24,6 +24,8 @@
     <link rel="stylesheet" type="text/css" href="./Assets/CSS/bootswatch.css">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="./Assets/CSS/style.css">
+    <!-- login JS -->
+    <script type="text/javascript" src="./Assets/JS/login.js"></script>
     <style>
         body{
             background-image: url("http://wallpapercave.com/wp/f2nbsPJ.jpg");
@@ -37,18 +39,27 @@
             border-radius: 24px;
             margin: 10px;
         }
+        .input-group{
+           vertical-align: center;
+        }
 
 
     </style>
 </head>
 
 <body>
-    <div style="position:fixed; bottom:50%; left:40%; text-align: center">
+    <div style="position:fixed; bottom:50%; left:20%; text-align: center">
         <h1>First Interstate Properties</h1>
         <br>
         <h2>Development Tracker</h2>
         <br>
-        <button>Log In</button><button>Sign Up</button>
+        <div class="input-group">
+             <input type="text" class="form-control" id="txtEmail" placeholder="Email" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+             <input type="password" class="form-control" id="txtPassword" placeholder="Password" aria-describedby="basic-addon1">
+        </div>
+        <button id="btnLogin">Log In</button><button id="btnSignUp">Sign Up</button>
     </div>
 </body>
 </html>
