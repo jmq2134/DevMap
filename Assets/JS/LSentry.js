@@ -251,25 +251,26 @@ $(document).on("click", ".editClass", function (snap){  //when edit button is cl
 	isEdit = 1;
 
 	console.log($(this).siblings());
-	
-	var name = $(this).siblings().first(); // working
-	var street1 = $(this).siblings(":nth-child(2)").children().first(); // working
-	var street2 = street1.next();
-	var city = street2.next().next(); // working
-	var state = city.next(); // working
-	var zip = state.next(); // working
-	var dateEntered = $(this).siblings(":nth-child(3)").first(); // working
-	var dateSold = $(this).siblings(":nth-child(4)").first();
-	var buildingSF = $(this).siblings(":nth-child(5)").first();
-	var acreage = $(this).siblings(":nth-child(6)").first();
-	var salePrice = $(this).siblings(":nth-child(8)").first();
-	var numUnits = $(this).siblings(":nth-child(9)").first(); // working
-	var oneBed = $(this).siblings(":nth-child(11)").first(); // working
-	var twoBed = $(this).siblings(":nth-child(12)").first(); // working
-	var threeBed = $(this).siblings(":nth-child(13)").first(); // working
-	var notes = $(this).siblings(":nth-child(14)").first(); // working
 
-	//prefill all the input area for the pop up window
+	// Grab info from table row
+	var name = $(this).siblings().first(); 
+	var street1 = $(this).siblings(":nth-child(2)").children().first(); 
+	var street2 = street1.next();
+	var city = street2.next().next(); 
+	var state = city.next(); 
+	var zip = state.next(); 
+	var dateEntered = $(this).siblings(":nth-child(3)").first(); 
+	var dateSold = $(this).siblings(":nth-child(4)").first(); 
+	var buildingSF = $(this).siblings(":nth-child(6)").first(); 
+	var acreage = $(this).siblings(":nth-child(7)").first();
+	var salePrice = $(this).siblings(":nth-child(5)").first();
+	var numUnits = $(this).siblings(":nth-child(9)").first(); 
+	var oneBed = $(this).siblings(":nth-child(11)").first(); 
+	var twoBed = $(this).siblings(":nth-child(12)").first(); 
+	var threeBed = $(this).siblings(":nth-child(13)").first(); 
+	var notes = $(this).siblings(":nth-child(14)").first(); 
+
+	// Prefill all the input area for the pop up window
 	$("#exampleModalLongTitle").html("Edit Lease Comparable");
 	$("#name_id").val(name.attr("data-name"));
 	$("#street1_id").val(street1.attr("data-name"));
@@ -278,9 +279,9 @@ $(document).on("click", ".editClass", function (snap){  //when edit button is cl
 	$("#state_id").val(state.attr("data-name"));
 	$("#zip_id").val(zip.attr("data-name"));
 	$("#dateEntered_id").val(dateEntered.attr("data-name"));
-	$("dateSold_id").val(dateSold.attr("data-name"));
-	$("buildingSF_id").val(buildingSF.attr("data-name"));
-	$("acreage_id").val(acreage.attr("data-name"));
+	$("#dateSold_id").val(dateSold.attr("data-name"));
+	$("#buildingSF_id").val(buildingSF.attr("data-name"));
+	$("#acreage_id").val(acreage.attr("data-name"));
 	$("#salePrice_id").val(salePrice.attr("data-name"));
 	$("#numUnits_id").val(numUnits.attr("data-name"));
 	$("#oneBed_id").val(oneBed.attr("data-name"));
